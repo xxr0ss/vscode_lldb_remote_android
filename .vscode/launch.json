@@ -1,15 +1,30 @@
 {
     "configurations": [
         {
-            "name": "Remote launch",
+            "name": "Remote via tcp",
             "type": "lldb",
             "request": "attach",
             "pid": "${input:pid}",
             "initCommands": [
                 "platform select remote-android",
-                "platform connect unix-abstract-connect:///data/local/tmp/debug.sock",
-                "settings set target.inherit-env false",
+                "platform connect connect://localhost:6666",
             ],
+            "postRunCommands": [
+                "settings set target.inherit-env false",
+            ]
+        },
+        {
+            "name": "Remote via unix-sock",
+            "type": "lldb",
+            "request": "attach",
+            "pid": "${input:pid}",
+            "initCommands": [
+                "platform select remote-android",
+                "platform connect unix-abstract-connect:///data/local/tmp/debug.sock"
+            ],
+            "postRunCommands": [
+                "settings set target.inherit-env false",
+            ]
         }
     ],
     "inputs": [
@@ -18,7 +33,7 @@
             "type": "command",
             "command": "shellCommand.execute",
             "args": {
-                "command": "adb shell pidof re.xx.androidbud"
+                "command": "adb shell pidof re.xx.mynative"
             }
         }
     ]
