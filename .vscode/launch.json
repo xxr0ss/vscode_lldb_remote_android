@@ -7,7 +7,6 @@
             "pid": "${input:pid}",
             "initCommands": [
                 "platform select remote-android",
-                "platform connect connect://97GAX0HUBL:6666",
                 // "platform connect connect://localhost:6666",
                 // "platform connect unix-abstract-connect:///data/local/tmp/debug.sock",
             ],
@@ -35,7 +34,9 @@
             "type": "command",
             "command": "shellCommand.execute",
             "args": {
-                "command": "adb shell pidof re.xx.mynative"
+                "command": "adb shell pidof <package_name>"
+                // *nix
+                // "command": "adb shell pidof <package_name> | tr ' ' '\n'"
             }
         }
     ]
