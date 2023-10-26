@@ -26,4 +26,13 @@
     }
     ```
 
-    * Start target on your Android device, and start debugging with VS Code. You can now attach to the `pid`, which is obtained via automatically run commandline.
+* Start target on your Android device, and start debugging with VS Code. You can now attach to the `pid`, which is obtained via automatically run commandline.
+
+* `adb push` corresponding `lldb-server` from NDK to Android device.
+
+* Start `lldb-server` in adb shell
+    ```
+    chmod a+x ./lldb-server
+    ./lldb-server p --server --listen unix-abstract:///data/local/tmp/debug.sock
+    ```
+* Launch CodeLLDB session
