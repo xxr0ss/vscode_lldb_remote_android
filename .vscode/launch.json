@@ -9,6 +9,7 @@
                 "platform select remote-android",
                 // "platform connect connect://localhost:6666",
                 // "platform connect unix-abstract-connect:///data/local/tmp/debug.sock",
+                "script from my_debug_script import *",
             ],
             "postRunCommands": [
                 "settings set target.inherit-env false",
